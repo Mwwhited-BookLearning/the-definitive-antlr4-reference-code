@@ -1,6 +1,3 @@
-/**
-From antlr 4.3 on actions accessing text attributes in the form of $rule.text need to be changed to $ctx.getText();
-*/
 grammar Simple;
 
 prog:   classDef+ ; // match one or more class definitions
@@ -18,9 +15,9 @@ member
     ;
 
 stat:   expr ';'
-        {System.out.println("found expr: "+$ctx.getText());}
+        {System.out.println("found expr: "+$stat.text);}
     |   ID '=' expr ';'
-        {System.out.println("found assign: "+$ctx.getText());}
+        {System.out.println("found assign: "+$stat.text);}
     ;
 
 expr:   INT 
